@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MulaLink · Affiliate Earn Hub</title>
+  <!-- Font Awesome 6 (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f9faff 0%, #eef1f9 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .main-container {
+      max-width: 1300px;
+      width: 100%;
+    }
+
+    /* header / hero */
+    .hero {
+      background: linear-gradient(135deg, #0b1b3a 0%, #1d3b6b 100%);
+      border-radius: 2.5rem;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 25px 40px -15px rgba(0, 20, 50, 0.4);
+      position: relative;
+      overflow: hidden;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero::before {
+      content: "💰";
+      font-size: 14rem;
+      position: absolute;
+      right: -20px;
+      bottom: -50px;
+      opacity: 0.05;
+      transform: rotate(10deg);
+      pointer-events: none;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-text h1 i {
+      color: #ffd966;
+      margin-right: 8px;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      max-width: 500px;
+      font-weight: 400;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+      z-index: 2;
+    }
+
+    .hero .register-btn {
+      background: #ffb347;
+      background: linear-gradient(145deg, #ffb347, #ff8c1a);
+      color: #0a1e3c;
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 1rem 2.5rem;
+      border-radius: 60px;
+      box-shadow: 0 15px 20px -8px rgba(0, 0, 0, 0.3);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: #0b1b3a;
+    }
+
+    .hero .register-btn i {
+      font-size: 1.4rem;
+      transition: transform 0.2s;
+    }
+
+    .hero .register-btn:hover {
+      transform: scale(1.03);
+      background: linear-gradient(145deg, #ffc55c, #ff9e2e);
+      box-shadow: 0 20px 25px -8px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero .register-btn:hover i {
+      transform: translateX(5px);
+    }
+
+    .whatsapp-support {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      padding: 0.7rem 1.5rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .whatsapp-support i {
+      color: #25D366;
+      font-size: 1.6rem;
+    }
+
+    .whatsapp-support a {
+      color: white;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+
+    .whatsapp-support a:hover {
+      text-decoration: underline;
+    }
+
+    /* section title */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0e1f40;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .section-title i {
+      font-size: 2rem;
+      color: #ff8c1a;
+    }
+
+    /* cards grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 2rem;
+      padding: 1.8rem 1.6rem 1.8rem;
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      position: relative;
+      backdrop-filter: blur(2px);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 179, 71, 0.2);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.2rem;
+      background: #f0f4ff;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1.5rem;
+      color: #1d3b6b;
+      transition: 0.2s;
+    }
+
+    .card:hover .card-icon {
+      background: #ffb34720;
+      color: #ff8c1a;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: #0e1f40;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #4a5568;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .card .register-btn {
+      background: #0e1f40;
+      color: white;
+      border: none;
+      padding: 0.9rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      width: 100%;
+      box-shadow: 0 6px 12px -5px rgba(0, 0, 0, 0.1);
+      border: 1px solid #0e1f40;
+    }
+
+    .card .register-btn i {
+      font-size: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .card .register-btn:hover {
+      background: #ff8c1a;
+      border-color: #ff8c1a;
+      color: #0b1b3a;
+      transform: scale(1.02);
+    }
+
+    .card .register-btn:hover i {
+      transform: translateX(4px);
+    }
+
+    /* support strip bottom */
+    .support-strip {
+      background: #ffffffdd;
+      backdrop-filter: blur(10px);
+      border-radius: 80px;
+      padding: 0.9rem 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border: 1px solid #ffffff;
+      box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.1);
+      margin-top: 1rem;
+    }
+
+    .support-strip .whatsapp-support-dark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .support-strip .whatsapp-support-dark i {
+      color: #25D366;
+      font-size: 2rem;
+    }
+
+    .support-strip .whatsapp-support-dark a {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0e1f40;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .support-strip .whatsapp-support-dark a:hover {
+      color: #ff8c1a;
+    }
+
+    .support-strip small {
+      color: #4a5568;
+      font-size: 0.9rem;
+    }
+
+    /* misc */
+    .badge {
+      font-size: 0.7rem;
+      background: #e9ecf5;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-weight: 500;
+      color: #1d3b6b;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding: 2rem 1.5rem;
+      }
+      .hero-cta {
+        align-items: flex-start;
+        width: 100%;
+      }
+      .hero .register-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+      .support-strip {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero .register-btn {
+        font-size: 1rem;
+        padding: 0.9rem 1.5rem;
+      }
+    }
+
+    /* custom spin animation for fun */
+    @keyframes soft-spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .spin-icon {
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+    .card:hover .spin-icon {
+      animation: soft-spin 2s infinite linear;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+
+    <!-- HERO / HOME PAGE REGISTRATION BUTTON -->
+    <div class="hero">
+      <div class="hero-text">
+        <h1>
+          <i class="fas fa-hand-holding-usd"></i> Earn with MulaLink
+        </h1>
+        <p>Six real ways to make money online. Register once, access all opportunities.</p>
+      </div>
+      <div class="hero-cta">
+        <!-- HOME PAGE REGISTRATION BUTTON -->
+        <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" target="_blank" class="register-btn">
+          <i class="fas fa-user-plus"></i> Register Now
+        </a>
+        <div class="whatsapp-support">
+          <i class="fab fa-whatsapp"></i>
+          <a href="https://wa.me/254796214382" target="_blank">0796214382</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- WAYS TO EARN SECTION -->
+    <div class="section-title">
+      <i class="fas fa-coins"></i> ✅ Ways to Earn
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- 1. Affiliate Marketing -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-bullhorn"></i></div>
+        <h3>💼 Affiliate Marketing</h3>
+        <p>Promote top offers and earn commissions on every sale. High conversion rates, weekly payouts.</p>
+        <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" target="_blank" class="register-btn">
+          Register <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 2. AI Training Bonus -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-robot"></i></div>
+        <h3>🤖 AI Training Bonus</h3>
+        <p>Help train AI models and earn bonuses for each completed task. Simple, flexible, and rewarding.</p>
+        <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" target="_blank" class="register-btn">
+          Register <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 3. Hotel Reviews -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-hotel"></i></div>
+        <h3>🏨 Hotel Reviews</h3>
+        <p>Share your honest experience at hotels and get paid per review. Great for travelers.</p>
+        <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" target="_blank" class="register-btn">
+          Register <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 4. Chatting with Wazungu -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-comment-dots"></i></div>
+        <h3>💬 Chatting with Wazungu</h3>
+        <p>Get paid to chat with international clients. Friendly conversations, real earnings.</p>
+        <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" target="_blank" class="register-btn">
+          Register <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 5. Product Promotion -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-shopping-bag"></i></div>
+        <h3>🛍️ Product Promotion</h3>
+        <p>Promote trending products on social media. Earn per click, lead, or sale — your choice.</p>
+        <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" target="_blank" class="register-btn">
+          Register <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 6. Spinning -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-dharmachakra spin-icon"></i></div>
+        <h3>🎡 Spinning</h3>
+        <p>Spin the wheel and win instant bonuses. Daily free spins, real cash prizes.</p>
+        <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" target="_blank" class="register-btn">
+          Register <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 7. Walk and Earn (added as extra card – requirement says 7 ways) -->
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-walking"></i></div>
+        <h3>🚶 Walk and Earn</h3>
+        <p>Turn your daily steps into rewards. Sync your fitness tracker and start earning.</p>
+        <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" target="_blank" class="register-btn">
+          Register <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM SUPPORT / WHATSAPP -->
+    <div class="support-strip">
+      <div class="whatsapp-support-dark">
+        <i class="fab fa-whatsapp"></i>
+        <a href="https://wa.me/254796214382" target="_blank">0796214382</a>
+        <span class="badge">support 24/7</span>
+      </div>
+      <small><i class="fas fa-shield-alt"></i> Instant help · Join now</small>
+    </div>
+
+  </div>
+
+  <script>
+    // optional minimal JS: ensure all register buttons use the same link (already in HTML)
+    // but also can add a small touch: console welcome + confirm buttons work.
+    (function() {
+      // add a subtle click animation on register buttons
+      const buttons = document.querySelectorAll('.register-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          // if the button is an anchor with target _blank, don't prevent default
+          // just a visual feedback
+          this.style.transform = 'scale(0.98)';
+          setTimeout(() => {
+            this.style.transform = '';
+          }, 120);
+        });
+      });
+
+      // console info for the developer / curious user
+      console.log('✅ MulaLink affiliate UI — registration link set. WhatsApp support: 0796214382');
+    })();
+  </script>
+
+  <!-- note: all registration buttons point to the specified link -->
+  <!-- the walk & earn card is added as the 7th method (spinning is 6th) -->
+</body>
+</html>
