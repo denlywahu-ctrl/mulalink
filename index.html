@@ -2,572 +2,939 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MULAVIBE · Earn. Grow. Together.</title>
-  <!-- Font Awesome 6 (free) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    /* ---------- RESET & GLOBAL ---------- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Jobs · Earn Online Instantly 💸</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
 
-    body {
-      background: linear-gradient(145deg, #f9f3e9 0%, #f2e7da 100%);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-    }
+:root {
+  --primary:#0b1b2f;
+  --primary-light:#1d3b5c;
+  --accent:#ffb347;
+  --accent-2:#ff8a3d;
+  --accent-glow:rgba(255,179,71,.35);
+  --green:#25D366;
+  --pink:#ff4d6d;
+  --bg-soft:#f7f9fc;
+  --text-muted:#4e5e6e;
+  --card-shadow:0 18px 35px -12px rgba(0,0,0,.08);
+  --card-hover:0 30px 45px -15px rgba(11,27,47,.2);
+}
 
-    /* ---------- CARD ---------- */
-    .card {
-      max-width: 480px;
-      width: 100%;
-      background: #ffffff;
-      border-radius: 2.5rem;
-      padding: 2.2rem 2rem 2.5rem;
-      box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.15), 0 8px 18px -6px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s;
-      border: 1px solid rgba(255, 215, 150, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
+html { scroll-behavior:smooth; }
 
-    /* subtle glow decoration */
-    .card::before {
-      content: '';
-      position: absolute;
-      top: -40%;
-      right: -30%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(255, 200, 100, 0.08) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
+body {
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(145deg,#f7f9fc 0%,#eef2f9 100%);
+  color:var(--primary);
+  line-height:1.5;
+  padding:0 1.5rem 4rem;
+  min-height:100vh;
+  overflow-x:hidden;
+}
 
-    /* ---------- LOGO ---------- */
-    .logo-block {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1.8rem;
-      position: relative;
-      z-index: 2;
-    }
+/* ========= ANIMATED BLOBS ========= */
+.blob {
+  position:fixed;
+  border-radius:50%;
+  filter:blur(90px);
+  opacity:.35;
+  z-index:-1;
+  pointer-events:none;
+  animation:float 14s ease-in-out infinite;
+}
+.blob-1 { width:380px; height:380px; background:#ffb347; top:-100px; right:-100px; }
+.blob-2 { width:420px; height:420px; background:#7aa7ff; bottom:-150px; left:-120px; animation-delay:-4s; }
+.blob-3 { width:300px; height:300px; background:#ff8a3d; top:40%; left:35%; animation-delay:-8s; opacity:.15; }
 
-    .logo-icon {
-      font-size: 2.1rem;
-      line-height: 1;
-      color: #0b3b2c;
-      background: #ffd966;
-      width: 3.2rem;
-      height: 3.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 1.2rem;
-      box-shadow: 0 6px 0 #b38f4b;
-      transform: rotate(2deg);
-    }
+@keyframes float {
+  0%,100% { transform:translate(0,0) scale(1); }
+  50% { transform:translate(30px,-30px) scale(1.08); }
+}
 
-    .logo-text {
-      font-weight: 800;
-      font-size: 1.9rem;
-      letter-spacing: -0.5px;
-      color: #0b3b2c;
-    }
+/* ========= TOP BAR ========= */
+.topbar {
+  max-width:1280px;
+  margin:0 auto;
+  padding:1.2rem 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  flex-wrap:wrap;
+}
 
-    .logo-text span {
-      color: #c47b2d;
-      font-weight: 700;
-    }
+.logo {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:900;
+  font-size:1.5rem;
+  letter-spacing:-.03em;
+}
 
-    /* ---------- HERO ---------- */
-    .hero-title {
-      font-size: 2.3rem;
-      font-weight: 800;
-      line-height: 1.2;
-      color: #1a3e2f;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
-      position: relative;
-      z-index: 2;
-    }
+.logo-badge {
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  width:44px; height:44px;
+  border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  color:#fff;
+  font-size:1.4rem;
+  box-shadow:0 10px 22px -6px var(--accent-glow);
+  transform:rotate(-6deg);
+}
 
-    .hero-title .accent {
-      color: #c47b2d;
-    }
+.logo span { color:var(--primary-light); }
 
-    .hero-sub {
-      font-size: 1rem;
-      color: #4b5e54;
-      margin-bottom: 2rem;
-      font-weight: 500;
-      line-height: 1.5;
-      background: #fef9f0;
-      padding: 0.9rem 1.2rem;
-      border-radius: 1.5rem;
-      border-left: 5px solid #ffb347;
-      position: relative;
-      z-index: 2;
-    }
+.live-pill {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#fff;
+  padding:.55rem 1.2rem;
+  border-radius:50px;
+  font-weight:600;
+  font-size:.85rem;
+  box-shadow:0 8px 20px -8px rgba(0,0,0,.12);
+  border:1px solid #eef2f9;
+}
 
-    .hero-sub i {
-      color: #d18f2c;
-      margin-right: 6px;
-    }
+.live-dot {
+  width:9px; height:9px;
+  background:var(--green);
+  border-radius:50%;
+  box-shadow:0 0 0 0 rgba(37,211,102,.7);
+  animation:pulse-live 1.8s infinite;
+}
 
-    /* ---------- SPONSOR ---------- */
-    .sponsor-chip {
-      display: inline-flex;
-      align-items: center;
-      background: #e8f0ec;
-      padding: 0.45rem 1.2rem 0.45rem 0.8rem;
-      border-radius: 30px;
-      margin-bottom: 1.8rem;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #1a3e2f;
-      border: 1px solid #cfe2d9;
-      gap: 0.4rem;
-      position: relative;
-      z-index: 2;
-    }
+@keyframes pulse-live {
+  0% { box-shadow:0 0 0 0 rgba(37,211,102,.7); }
+  70% { box-shadow:0 0 0 12px rgba(37,211,102,0); }
+  100% { box-shadow:0 0 0 0 rgba(37,211,102,0); }
+}
 
-    .sponsor-chip i {
-      color: #c47b2d;
-      font-size: 1rem;
-    }
+/* ========= FOMO POPUP ========= */
+.fomo-popup {
+  position:fixed;
+  bottom:25px; left:25px;
+  background:linear-gradient(135deg,#0b1b2f,#1d3b5c);
+  color:#fff;
+  padding:1rem 1.8rem 1rem 1.4rem;
+  border-radius:60px;
+  box-shadow:0 25px 40px -12px rgba(0,0,0,.5);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  z-index:9999;
+  transform:translateY(150px) scale(.9);
+  opacity:0;
+  transition:transform .5s cubic-bezier(.175,.885,.32,1.275), opacity .3s;
+  border-left:6px solid var(--accent);
+  font-weight:600;
+  max-width:90vw;
+}
 
-    .sponsor-name {
-      background: #ffffff;
-      padding: 0.2rem 0.9rem;
-      border-radius: 30px;
-      font-weight: 700;
-      color: #0b3b2c;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    }
+.fomo-popup.show { transform:translateY(0) scale(1); opacity:1; }
+.fomo-popup i { color:var(--accent); font-size:1.6rem; animation:spin-bolt 1.5s ease infinite; }
 
-    /* ---------- FORM ---------- */
-    .form-head {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1a3e2f;
-      margin-bottom: 1.6rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      position: relative;
-      z-index: 2;
-    }
+@keyframes spin-bolt {
+  0%,100% { transform:rotate(0) scale(1); }
+  50% { transform:rotate(15deg) scale(1.15); }
+}
 
-    .form-head i {
-      color: #c47b2d;
-      font-size: 1.6rem;
-    }
+.fomo-popup span { font-size:.95rem; letter-spacing:-.01em; }
+.fomo-popup .highlight { color:var(--accent); font-weight:800; }
 
-    .input-group {
-      margin-bottom: 1.4rem;
-      position: relative;
-      z-index: 2;
-    }
+/* ========= CONTAINER ========= */
+.container { max-width:1280px; margin:0 auto; }
 
-    .input-label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #5e6e64;
-      margin-bottom: 0.4rem;
-    }
+/* ========= HERO ========= */
+.hero {
+  display:grid;
+  grid-template-columns:1.3fr .9fr;
+  gap:2.5rem;
+  align-items:center;
+  margin:2rem 0 3rem;
+}
 
-    .phone-input-wrapper {
-      display: flex;
-      align-items: center;
-      background: #f5f7f6;
-      border-radius: 60px;
-      border: 2px solid #dde5e1;
-      transition: all 0.15s;
-      padding: 0 0.2rem 0 1.2rem;
-    }
+.hero-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:linear-gradient(135deg,#fff3e0,#ffe5c2);
+  color:var(--primary);
+  padding:.5rem 1.3rem;
+  border-radius:40px;
+  font-weight:700;
+  font-size:.85rem;
+  margin-bottom:1.2rem;
+  box-shadow:0 6px 16px -6px var(--accent-glow);
+  border:1px solid rgba(255,179,71,.4);
+}
 
-    .phone-input-wrapper:focus-within {
-      border-color: #c47b2d;
-      background: #ffffff;
-      box-shadow: 0 0 0 4px rgba(196, 123, 45, 0.15);
-    }
+.hero-badge i { color:var(--accent-2); }
 
-    .country-code {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-weight: 700;
-      color: #0b3b2c;
-      background: #e9f0ec;
-      padding: 0.6rem 0.9rem 0.6rem 1rem;
-      border-radius: 40px;
-      font-size: 1rem;
-      margin-right: 0.2rem;
-      white-space: nowrap;
-    }
+.hero h1 {
+  font-size:3.4rem;
+  font-weight:900;
+  line-height:1.08;
+  letter-spacing:-.035em;
+  margin-bottom:1rem;
+}
 
-    .country-code i {
-      font-size: 0.9rem;
-      color: #c47b2d;
-    }
+.hero h1 .grad {
+  background:linear-gradient(135deg,var(--accent),var(--accent-2),#ff4d6d);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
 
-    .phone-input-wrapper input {
-      flex: 1;
-      border: none;
-      background: transparent;
-      padding: 1rem 0.8rem 1rem 0.2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #1a2e25;
-      outline: none;
-      min-width: 0;
-    }
+.hero p {
+  font-size:1.15rem;
+  color:#2c3e50;
+  max-width:560px;
+  margin-bottom:1.8rem;
+}
 
-    .phone-input-wrapper input::placeholder {
-      font-weight: 400;
-      color: #a0b2a8;
-      font-size: 1rem;
-    }
+.hero-cta { display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-bottom:1.5rem; }
 
-    .hint-text {
-      font-size: 0.75rem;
-      color: #6b7e73;
-      margin-top: 0.4rem;
-      margin-left: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
+.trust-row {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:.88rem;
+  color:var(--text-muted);
+  flex-wrap:wrap;
+}
 
-    .hint-text i {
-      font-size: 0.7rem;
-      color: #8fa89b;
-    }
+.avatars { display:flex; }
+.avatars span {
+  width:32px; height:32px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--primary-light),var(--primary));
+  color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.75rem;
+  font-weight:700;
+  margin-left:-10px;
+  border:2px solid #fff;
+}
+.avatars span:first-child { margin-left:0; }
 
-    /* ---------- BUTTON ---------- */
-    .btn-primary {
-      width: 100%;
-      background: #1a3e2f;
-      border: none;
-      border-radius: 60px;
-      padding: 1.2rem 1.5rem;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      cursor: pointer;
-      box-shadow: 0 10px 0 #0d2b1f, 0 8px 18px rgba(0, 0, 0, 0.15);
-      transition: all 0.1s ease;
-      margin-top: 1.8rem;
-      letter-spacing: 0.3px;
-      border: 1px solid #2f604a;
-      position: relative;
-      z-index: 2;
-    }
+/* ========= BUTTONS ========= */
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:.95rem 1.9rem;
+  border-radius:60px;
+  font-weight:700;
+  font-size:.98rem;
+  text-decoration:none;
+  transition:.25s ease;
+  cursor:pointer;
+  border:none;
+  letter-spacing:-.01em;
+  position:relative;
+  overflow:hidden;
+}
 
-    .btn-primary i {
-      font-size: 1.3rem;
-    }
+.btn-primary {
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;
+  box-shadow:0 14px 26px -10px rgba(11,27,47,.5);
+}
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 20px 32px -10px rgba(11,27,47,.6); }
 
-    .btn-primary:active {
-      transform: translateY(4px);
-      box-shadow: 0 6px 0 #0d2b1f, 0 6px 12px rgba(0, 0, 0, 0.1);
-    }
+.btn-accent {
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:var(--primary);
+  box-shadow:0 14px 26px -10px var(--accent-glow);
+}
+.btn-accent:hover { transform:translateY(-3px); box-shadow:0 20px 32px -8px rgba(255,138,61,.6); }
 
-    .btn-primary:hover {
-      background: #234f3d;
-    }
+.btn-whatsapp {
+  background:linear-gradient(135deg,#25D366,#1ebe5a);
+  color:#fff;
+  box-shadow:0 14px 26px -10px rgba(37,211,102,.5);
+}
+.btn-whatsapp:hover { transform:translateY(-3px); box-shadow:0 20px 32px -10px rgba(37,211,102,.6); }
 
-    /* ---------- SIGN IN ROWS ---------- */
-    .signin-row {
-      margin-top: 1.8rem;
-      text-align: center;
-      font-size: 1rem;
-      color: #3b5145;
-      font-weight: 500;
-      border-top: 1px dashed #d0dbd5;
-      padding-top: 1.5rem;
-      position: relative;
-      z-index: 2;
-    }
+.btn-pulse::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.3);
+  transform:translateX(-100%);
+  animation:shine 2.8s infinite;
+}
+@keyframes shine {
+  0% { transform:translateX(-100%); }
+  60%,100% { transform:translateX(100%); }
+}
 
-    .signin-row a {
-      color: #c47b2d;
-      font-weight: 700;
-      text-decoration: none;
-      border-bottom: 2px solid rgba(196, 123, 45, 0.3);
-      transition: border 0.15s;
-      margin-left: 0.2rem;
-    }
+/* ========= HERO CARD (RIGHT) ========= */
+.hero-card {
+  background:#fff;
+  border-radius:32px;
+  padding:2rem;
+  box-shadow:0 40px 60px -25px rgba(11,27,47,.25);
+  border:1px solid rgba(255,255,255,.6);
+  position:relative;
+  overflow:hidden;
+}
 
-    .signin-row a:hover {
-      border-bottom-color: #c47b2d;
-    }
+.hero-card::before {
+  content:'';
+  position:absolute;
+  top:-60px; right:-60px;
+  width:180px; height:180px;
+  background:radial-gradient(circle,var(--accent-glow),transparent 70%);
+  border-radius:50%;
+}
 
-    .extra-signin {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: #7a8e82;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
-      position: relative;
-      z-index: 2;
-    }
+.instant-withdraw {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-weight:800;
+  font-size:1.1rem;
+  margin-bottom:1rem;
+  position:relative;
+}
 
-    .extra-signin a {
-      color: #1a3e2f;
-      font-weight: 600;
-      text-decoration: none;
-      border-bottom: 1px dotted #b3c2b9;
-    }
+.instant-withdraw i {
+  font-size:2.2rem;
+  color:var(--accent);
+  animation:spin-bolt 2s infinite;
+}
 
-    /* ---------- WHATSAPP BADGE (REPLACED) ---------- */
-    .whatsapp-badge {
-      margin-top: 1.8rem;
-      display: flex;
-      justify-content: center;
-      font-size: 0.95rem;
-      background: #f1f7f3;
-      padding: 0.75rem 1.2rem;
-      border-radius: 60px;
-      color: #1b4b37;
-      font-weight: 600;
-      border: 1px solid #d6e4dc;
-      gap: 8px;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
+.hero-card .small-note { font-size:.85rem; color:#4b5b6c; font-weight:500; }
 
-    .whatsapp-badge i {
-      color: #25D366;
-      font-size: 1.3rem;
-    }
+.hero-card .stat-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:1.4rem;
+  position:relative;
+}
 
-    .whatsapp-badge .number {
-      background: #ffffff;
-      padding: 0.2rem 0.8rem;
-      border-radius: 40px;
-      font-weight: 700;
-      color: #0b3b2c;
-      letter-spacing: 0.5px;
-    }
+.stat-box {
+  background:linear-gradient(145deg,#f7f9fc,#eef2f9);
+  padding:1rem;
+  border-radius:18px;
+  text-align:center;
+  border:1px solid #eef2f9;
+}
 
-    /* ---------- MOBILE ---------- */
-    @media (max-width: 460px) {
-      .card {
-        padding: 1.8rem 1.5rem;
-      }
-      .hero-title {
-        font-size: 2rem;
-      }
-      .logo-text {
-        font-size: 1.6rem;
-      }
-      .country-code {
-        font-size: 0.9rem;
-        padding: 0.5rem 0.7rem 0.5rem 0.8rem;
-      }
-      .phone-input-wrapper input {
-        font-size: 1rem;
-        padding: 0.9rem 0.4rem 0.9rem 0.2rem;
-      }
-    }
+.stat-box .stat-num {
+  font-size:1.5rem;
+  font-weight:900;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  letter-spacing:-.02em;
+}
 
-    /* dynamic toast */
-    .toast-message {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      background: #1a3e2f;
-      color: #fff;
-      padding: 0.9rem 2rem;
-      border-radius: 60px;
-      font-weight: 600;
-      box-shadow: 0 15px 25px -5px rgba(0,0,0,0.3);
-      opacity: 0;
-      transition: opacity 0.25s, transform 0.25s;
-      pointer-events: none;
-      z-index: 999;
-      white-space: nowrap;
-      font-size: 1rem;
-      border: 1px solid #c4a56b;
-      letter-spacing: 0.3px;
-    }
+.stat-box .stat-label {
+  font-size:.72rem;
+  color:var(--text-muted);
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  margin-top:.15rem;
+}
 
-    .toast-message.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-      pointer-events: none;
-    }
-  </style>
+/* ========= SECTION TITLES ========= */
+.section-head {
+  text-align:center;
+  margin:4rem 0 2.5rem;
+}
+
+.section-head .eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#fff;
+  padding:.45rem 1.2rem;
+  border-radius:40px;
+  font-weight:700;
+  font-size:.8rem;
+  color:var(--accent-2);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  box-shadow:0 6px 16px -8px rgba(0,0,0,.1);
+  margin-bottom:1rem;
+}
+
+.section-head h2 {
+  font-size:2.6rem;
+  font-weight:900;
+  letter-spacing:-.03em;
+  line-height:1.1;
+  margin-bottom:.6rem;
+}
+
+.section-head p { color:var(--text-muted); font-size:1.05rem; max-width:600px; margin:0 auto; }
+
+/* ========= EARN GRID ========= */
+.earn-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.8rem;
+  margin-bottom:3rem;
+}
+
+.earn-card {
+  background:#fff;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:var(--card-shadow);
+  transition:.35s ease;
+  border:1px solid rgba(255,255,255,.7);
+  display:flex;
+  flex-direction:column;
+  position:relative;
+}
+
+.earn-card:hover {
+  transform:translateY(-10px);
+  box-shadow:var(--card-hover);
+}
+
+.earn-img-wrap {
+  width:100%;
+  height:175px;
+  overflow:hidden;
+  position:relative;
+  background:#eef2f9;
+}
+
+.earn-img-wrap img {
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .5s ease;
+}
+
+.earn-card:hover .earn-img-wrap img { transform:scale(1.12) rotate(1deg); }
+
+.earn-img-wrap .img-overlay {
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(11,27,47,.6),transparent 55%);
+}
+
+.img-badge {
+  position:absolute;
+  top:14px; left:14px;
+  font-size:1.6rem;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(6px);
+  width:52px; height:52px;
+  border-radius:16px;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+  transition:.3s;
+}
+
+.earn-card:hover .img-badge { transform:scale(1.1) rotate(-8deg); }
+
+.earn-tag {
+  position:absolute;
+  bottom:14px; right:14px;
+  background:var(--accent);
+  color:var(--primary);
+  padding:.35rem .85rem;
+  border-radius:30px;
+  font-weight:800;
+  font-size:.75rem;
+  box-shadow:0 6px 14px -4px var(--accent-glow);
+}
+
+.earn-body {
+  padding:1.5rem 1.6rem 1.7rem;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.earn-body h3 {
+  font-size:1.35rem;
+  font-weight:800;
+  letter-spacing:-.02em;
+  margin-bottom:.5rem;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.earn-body p {
+  color:var(--text-muted);
+  font-size:.92rem;
+  margin-bottom:1.4rem;
+  flex:1;
+}
+
+.earn-earnings {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:.82rem;
+  font-weight:700;
+  color:#1a7a4a;
+  background:#e8f8ef;
+  padding:.4rem .9rem;
+  border-radius:30px;
+  width:fit-content;
+  margin-bottom:1.2rem;
+}
+
+.reg-btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;
+  padding:.85rem 1.5rem;
+  border-radius:50px;
+  font-weight:700;
+  font-size:.95rem;
+  text-decoration:none;
+  transition:.25s;
+  border:none;
+  cursor:pointer;
+  width:100%;
+  margin-top:auto;
+  box-shadow:0 12px 20px -10px rgba(11,27,47,.4);
+}
+
+.reg-btn:hover {
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:var(--primary);
+  transform:translateY(-2px);
+  box-shadow:0 16px 26px -10px var(--accent-glow);
+}
+
+/* ========= BENEFITS ========= */
+.benefits-row {
+  display:flex;
+  flex-wrap:wrap;
+  gap:1rem;
+  margin:3rem 0;
+  justify-content:center;
+}
+
+.benefit-item {
+  background:#fff;
+  border-radius:24px;
+  padding:.95rem 1.7rem;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  box-shadow:0 12px 26px -14px rgba(0,0,0,.12);
+  font-weight:700;
+  font-size:.92rem;
+  border:1px solid #fff;
+  transition:.25s;
+}
+
+.benefit-item:hover { transform:translateY(-4px); border-color:var(--accent-glow); }
+
+.benefit-item i {
+  color:var(--accent-2);
+  font-size:1.4rem;
+}
+
+/* ========= SOS BANNER ========= */
+.sos-banner {
+  background:linear-gradient(120deg,#0b1b2f 0%,#1d3b5c 60%,#2a4d75 100%);
+  border-radius:40px;
+  padding:2.5rem 2.8rem;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  margin:3rem 0;
+  color:#fff;
+  box-shadow:0 35px 45px -20px rgba(11,27,47,.6);
+  gap:1.5rem;
+  position:relative;
+  overflow:hidden;
+}
+
+.sos-banner::before {
+  content:'';
+  position:absolute;
+  top:-50px; right:-50px;
+  width:220px; height:220px;
+  background:radial-gradient(circle,var(--accent-glow),transparent 70%);
+  border-radius:50%;
+}
+
+.sos-banner h3 {
+  font-size:2rem;
+  font-weight:900;
+  letter-spacing:-.025em;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  position:relative;
+}
+
+.sos-banner h3 i { color:var(--accent); }
+
+.sos-banner p {
+  font-size:1.05rem;
+  opacity:.9;
+  max-width:550px;
+  margin-top:.5rem;
+  position:relative;
+}
+
+.sos-badge {
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:var(--primary);
+  border-radius:50px;
+  padding:.9rem 2rem;
+  font-weight:900;
+  font-size:1.05rem;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  white-space:nowrap;
+  box-shadow:0 12px 28px -8px var(--accent-glow);
+  position:relative;
+}
+
+.sos-badge i { animation:spin-bolt 1.5s infinite; }
+
+/* ========= TWO COLUMN ========= */
+.two-col {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2.5rem;
+  margin:3rem 0 2rem;
+}
+
+.col-head {
+  font-size:1.6rem;
+  font-weight:900;
+  letter-spacing:-.02em;
+  margin-bottom:1.3rem;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.col-head i { color:var(--accent-2); }
+
+/* testimonials */
+.testimonial-grid { display:flex; flex-direction:column; gap:1.1rem; }
+
+.testimonial-card {
+  background:#fff;
+  padding:1.6rem 1.7rem;
+  border-radius:26px;
+  box-shadow:0 14px 30px -18px rgba(0,0,0,.12);
+  border:1px solid #f0f4fa;
+  transition:.25s;
+}
+
+.testimonial-card:hover { transform:translateX(4px); border-color:var(--accent-glow); }
+
+.testimonial-card .stars { color:var(--accent); margin-bottom:.5rem; font-size:.9rem; }
+
+.testimonial-card p {
+  font-size:.96rem;
+  color:#1a2c3f;
+  font-weight:500;
+  margin-bottom:1rem;
+  line-height:1.55;
+}
+
+.testimonial-user { display:flex; align-items:center; gap:12px; }
+
+.testimonial-user .avatar {
+  width:44px; height:44px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--primary-light),var(--primary));
+  color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800;
+  font-size:1rem;
+  border:2px solid var(--accent);
+}
+
+.testimonial-user .name { font-weight:800; font-size:.92rem; }
+.testimonial-user .role { font-size:.78rem; color:#5c6f82; }
+
+/* faq */
+.faq-list { display:flex; flex-direction:column; gap:.9rem; }
+
+.faq-item {
+  background:#fff;
+  padding:1.2rem 1.6rem;
+  border-radius:22px;
+  box-shadow:0 10px 24px -14px rgba(0,0,0,.1);
+  border:1px solid #e9eef4;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.faq-item:hover { border-color:var(--accent-glow); }
+
+.faq-question {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:700;
+  color:var(--primary);
+  font-size:.98rem;
+  gap:1rem;
+}
+
+.faq-question i { color:var(--accent-2); transition:transform .3s; flex-shrink:0; }
+
+.faq-answer {
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .35s ease, margin .25s;
+  color:#3f5567;
+  font-size:.92rem;
+  line-height:1.55;
+}
+
+.faq-item.open .faq-answer { max-height:200px; margin-top:.9rem; }
+.faq-item.open .faq-question i { transform:rotate(180deg); }
+
+/* ========= FOOTER CTA ========= */
+.footer-cta {
+  background:linear-gradient(135deg,#fff,#f7f9fc);
+  border-radius:40px;
+  padding:3rem 2.5rem;
+  text-align:center;
+  margin-top:3rem;
+  box-shadow:0 30px 60px -30px rgba(11,27,47,.3);
+  border:1px solid #fff;
+  position:relative;
+  overflow:hidden;
+}
+
+.footer-cta::before {
+  content:'';
+  position:absolute;
+  top:-80px; left:50%;
+  transform:translateX(-50%);
+  width:300px; height:300px;
+  background:radial-gradient(circle,var(--accent-glow),transparent 70%);
+  border-radius:50%;
+}
+
+.footer-cta h2 {
+  font-size:2.3rem;
+  font-weight:900;
+  letter-spacing:-.03em;
+  margin-bottom:.8rem;
+  position:relative;
+}
+
+.footer-cta p {
+  color:var(--text-muted);
+  font-size:1.05rem;
+  margin-bottom:1.8rem;
+  position:relative;
+}
+
+.footer-cta .btn-group {
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+  position:relative;
+}
+
+.footer-copy {
+  text-align:center;
+  margin-top:2.5rem;
+  color:#7a8a9a;
+  font-size:.85rem;
+}
+
+/* ========= RESPONSIVE ========= */
+@media (max-width:900px) {
+  .hero { grid-template-columns:1fr; gap:2rem; }
+  .hero h1 { font-size:2.6rem; }
+  .two-col { grid-template-columns:1fr; }
+}
+
+@media (max-width:600px) {
+  body { padding:0 1rem 3rem; }
+  .hero h1 { font-size:2.1rem; }
+  .section-head h2 { font-size:1.9rem; }
+  .sos-banner { padding:1.8rem; }
+  .sos-banner h3 { font-size:1.5rem; }
+  .fomo-popup { left:12px; right:12px; bottom:12px; padding:.9rem 1.2rem; font-size:.85rem; }
+  .logo { font-size:1.25rem; }
+  .logo-badge { width:38px; height:38px; font-size:1.2rem; }
+}
+</style>
 </head>
 <body>
 
-  <div class="card">
-    <!-- MULAVIBE logo block (kept the vibe) -->
-    <div class="logo-block">
-      <div class="logo-icon">
-        <i class="fas fa-bolt"></i>
+<!-- animated background blobs -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<!-- ========== FOMO POPUP ========== -->
+<div id="fomoPopup" class="fomo-popup">
+  <i class="fas fa-bolt"></i>
+  <span><span class="highlight">Loading…</span> just earned <span class="highlight">KSh 0</span></span>
+</div>
+
+<!-- ========== TOP BAR ========== -->
+<div class="topbar">
+  <div class="logo">
+    <div class="logo-badge"><i class="fas fa-briefcase"></i></div>
+    Digital<span>Jobs</span>
+  </div>
+  <div class="live-pill">
+    <span class="live-dot"></span> 2,847 earning right now
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div>
+      <div class="hero-badge"><i class="fas fa-bolt"></i> 7 ways to earn · instant withdrawal</div>
+      <h1>Turn your phone into a <span class="grad">money machine</span> 💸</h1>
+      <p>Affiliate marketing, AI training, hotel reviews, chatting, product promo, spinning & walk-earn. Join thousands earning real cash — withdraw instantly to M-Pesa.</p>
+      <div class="hero-cta">
+        <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" class="btn btn-accent btn-pulse" target="_blank">
+          <i class="fas fa-rocket"></i> Register & Start Earning
+        </a>
+        <a href="https://wa.me/254796214382" class="btn btn-whatsapp" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp Support
+        </a>
       </div>
-      <div class="logo-text">MULA<span>VIBE</span></div>
-    </div>
-
-    <!-- Hero message (exact vibe) -->
-    <div class="hero-title">
-      Earn. Grow.<br>
-      <span class="accent">Together.</span>
-    </div>
-
-    <div class="hero-sub">
-      <i class="fas fa-coins"></i> Join MULAVIBE and turn everyday tasks — reviews, videos, surveys and referrals — into real M-Pesa earnings.
-    </div>
-
-    <!-- Sponsor (Denly wahu) -->
-    <div class="sponsor-chip">
-      <i class="fas fa-user-circle"></i> Sponsor : 
-      <span class="sponsor-name">Denly wahu</span>
-    </div>
-
-    <!-- Form headline -->
-    <div class="form-head">
-      <i class="fas fa-user-plus"></i> Create your MULAVIBE account
-    </div>
-
-    <!-- Registration form (with replaced link inside the sign-in links) -->
-    <form id="registrationForm" onsubmit="handleFormSubmit(event)">
-      <div class="input-group">
-        <label class="input-label" for="phone">Phone number</label>
-        <div class="phone-input-wrapper">
-          <div class="country-code">
-            <i class="fas fa-flag-ke"></i> +254
-          </div>
-          <input type="tel" id="phone" name="phone" placeholder="712 345 678" value="796214382" autocomplete="tel">
+      <div class="trust-row">
+        <div class="avatars">
+          <span>JM</span><span>AW</span><span>DK</span><span>+</span>
         </div>
-        <div class="hint-text">
-          <i class="fas fa-info-circle"></i> Enter your number — the country code is added automatically.
+        <span><strong>10,000+</strong> members already earning daily</span>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="instant-withdraw">
+        <i class="fas fa-clock"></i>
+        <div>
+          <strong>Instant Withdrawal</strong><br>
+          <span class="small-note">M-Pesa & bank · 24/7 · No minimum</span>
         </div>
       </div>
-
-      <button type="submit" class="btn-primary">
-        <i class="fas fa-arrow-right-to-bracket"></i> Sign up
-      </button>
-    </form>
-
-    <!-- Sign in link (with REPLACED link) -->
-    <div class="signin-row">
-      Already have an account? 
-      <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" target="_blank" rel="noopener">Sign in</a>
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-num">0 sec</div>
+          <div class="stat-label">Withdrawal wait</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">KSh 250K+</div>
+          <div class="stat-label">Paid out weekly</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">7</div>
+          <div class="stat-label">Earning methods</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Live support</div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Extra sign in line (same replaced link) -->
-    <div class="extra-signin">
-      <i class="fas fa-sign-in-alt" style="color:#b38f4b;"></i>
-      <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" target="_blank" rel="noopener">Already have an account? Sign in</a>
-    </div>
-
-    <!-- WhatsApp number replaced with 0796214382 -->
-    <div class="whatsapp-badge">
-      <i class="fab fa-whatsapp"></i> 
-      <span>Support / WhatsApp:</span>
-      <span class="number">0796214382</span>
-    </div>
+  <!-- ========== WAYS TO EARN ========== -->
+  <div class="section-head">
+    <div class="eyebrow"><i class="fas fa-coins"></i> Ways to Earn</div>
+    <h2>✅ 7 Ways to <span style="background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Fill Your Wallet</span></h2>
+    <p>Pick one or combine them all. Every method pays instantly to M-Pesa.</p>
   </div>
 
-  <!-- hidden toast container -->
-  <div id="toast" class="toast-message"></div>
+  <div class="earn-grid">
 
-  <script>
-    (function() {
-      // ----- 1. Ensure phone input shows the requested number (0796214382 without leading 0) -----
-      const phoneInput = document.getElementById('phone');
-      if (phoneInput) {
-        // set value to "796214382" (which shows as 0796214382 with +254 prefix)
-        phoneInput.value = '796214382';
+    <!-- 1. Affiliate Marketing -->
+    <div class="earn-card">
+      <div class="earn-img-wrap">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80&auto=format&fit=crop" alt="Affiliate Marketing">
+        <div class="img-overlay"></div>
+        <div class="img-badge">💼</div>
+        <div class="earn-tag">Up to 40%</div>
+      </div>
+      <div class="earn-body">
+        <h3>Affiliate Marketing</h3>
+        <p>Promote top offers & earn commission on every sale. Real-time tracking & recurring income.</p>
+        <div class="earn-earnings"><i class="fas fa-arrow-trend-up"></i> KSh 2K – 30K / week</div>
+        <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" class="reg-btn" target="_blank"><i class="fas fa-user-plus"></i> Register Now</a>
+      </div>
+    </div>
 
-        // also add a little listener to keep the number clean (optional)
-        phoneInput.addEventListener('input', function(e) {
-          // remove non-digit characters
-          this.value = this.value.replace(/\D/g, '');
-        });
-      }
+    <!-- 2. AI Training Bonus -->
+    <div class="earn-card">
+      <div class="earn-img-wrap">
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=700&q=80&auto=format&fit=crop" alt="AI Training Bonus">
+        <div class="img-overlay"></div>
+        <div class="img-badge">🤖</div>
+        <div class="earn-tag">Daily Bonus</div>
+      </div>
+      <div class="earn-body">
+        <h3>AI Training Bonus</h3>
+        <p>Get paid to train AI models. Flexible tasks, daily bonuses & instant payout.</p>
+        <div class="earn-earnings"><i class="fas fa-arrow-trend-up"></i> KSh 1.5K – 15K / week</div>
+        <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" class="reg-btn" target="_blank"><i class="fas fa-user-plus"></i> Register Now</a>
+      </div>
+    </div>
 
-      // ----- 2. Toast helper -----
-      const toastEl = document.getElementById('toast');
-      let toastTimer = null;
+    <!-- 3. Hotel Reviews -->
+    <div class="earn-card">
+      <div class="earn-img-wrap">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=80&auto=format&fit=crop" alt="Hotel Reviews">
+        <div class="img-overlay"></div>
+        <div class="img-badge">🏨</div>
+        <div class="earn-tag">Per Review</div>
+      </div>
+      <div class="earn-body">
+        <h3>Hotel Reviews</h3>
+        <p>Share your honest experience. Earn KSh 300–800 per verified review.</p>
+        <div class="earn-earnings"><i class="fas fa-arrow-trend-up"></i> KSh 300 – 800 / review</div>
+        <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" class="reg-btn" target="_blank"><i class="fas fa-user-plus"></i> Register Now</a>
+      </div>
+    </div>
 
-      function showToast(message, duration = 2800) {
-        if (!toastEl) return;
-        toastEl.textContent = message;
-        toastEl.classList.add('show');
-        if (toastTimer) clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => {
-          toastEl.classList.remove('show');
-        }, duration);
-      }
+    <!-- 4. Chatting with Wazungu -->
+    <div class="earn-card">
+      <div class="earn-img-wrap">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=700&q=80&auto=format&fit=crop" alt="Chatting with Wazungu">
+        <div class="img-overlay"></div>
+        <div class="img-badge">💬</div>
+        <div class="earn-tag">$20 / day</div>
+      </div>
+      <div class="earn-body">
+        <h3>Chatting with Wazungu</h3>
+        <p>Get paid to chat with international clients. Weekly bonuses, no experience needed.</p>
+        <div class="earn-earnings"><i class="fas fa-arrow-trend-up"></i> $10 – $30 / day</div>
+        <a href="https://mulalink.co.ke/auth/register?ref=6584D86E" class="reg-btn" target="_blank"><i class="fas fa-user-plus"></i> Register Now</a>
+      </div>
+    </div>
 
-      // ----- 3. Form submit handler (demo + sponsor info) -----
-      window.handleFormSubmit = function(event) {
-        event.preventDefault();
-
-        const phoneField = document.getElementById('phone');
-        let rawNumber = phoneField ? phoneField.value.trim() : '';
-
-        // remove any non-digit characters
-        rawNumber = rawNumber.replace(/\D/g, '');
-
-        if (!rawNumber) {
-          showToast('Please enter your phone number.', 2000);
-          return;
-        }
-
-        // format for display (ensure it starts with 0 if not already)
-        let displayNumber = rawNumber;
-        if (!displayNumber.startsWith('0')) {
-          displayNumber = '0' + displayNumber;
-        }
-
-        // show success with sponsor info (exactly as requested: Denly wahu)
-        showToast(`✅ Account created for ${displayNumber} — Sponsor: Denly wahu`);
-
-        // Also (optional) simulate redirection to the replaced link after a short delay
-        // Uncomment the lines below to actually redirect to the MULALINK registration link.
-        // setTimeout(() => {
-        //   window.open('https://mulalink.co.ke/auth/register?ref=6584D86E', '_blank');
-        // }, 1500);
-      };
-
-      // ----- 4. Extra: add click tracking / redirect on sign in? No, links work natively. -----
-      // But we can add a friendly console note about the replaced numbers.
-      console.log('MULAVIBE demo — WhatsApp: 0796214382 | Sign-in link: https://mulalink.co.ke/auth/register?ref=6584D86E');
-
-      // ----- 5. Small UX: auto-focus on phone input (optional) -----
-      // window.addEventListener('load', () => {
-      //   if (phoneInput) phoneInput.focus();
-      // });
-
-    })();
-  </script>
-
-</body>
-</html>
+    <!-- 5. Product Promotion -->
+    <div class="
