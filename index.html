@@ -4,19 +4,24 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>NovaEarn — 7 Real Ways to Earn Online</title>
+<title>SwiftGain — 8 Real Ways to Earn Online</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <style>
   :root{
-    --primary:#0f6b8a;
-    --primary-dark:#0b4f66;
-    --accent:#1d9bb8;
+    /* ===== NEW COLOR PALETTE ===== */
+    --primary:#5b21b6;        /* deep purple */
+    --primary-dark:#4c1d95;   /* darker purple */
+    --accent:#f97316;         /* vibrant orange */
+    --accent-light:#fb923c;
     --whatsapp:#25D366;
-    --bg:#f4f9fc;
-    --text:#0b2a3b;
-    --muted:#4e6677;
+    --gold:#f59e0b;
+    --bg:#faf5ff;             /* soft lavender background */
+    --text:#1e1b2e;           /* deep plum text */
+    --muted:#6b6382;          /* muted purple-grey */
     --card-bg:#ffffff;
-    --shadow:0 12px 30px rgba(13,85,110,0.08);
+    --shadow:0 12px 30px rgba(91,33,182,0.10);
+    --gradient:linear-gradient(135deg,#5b21b6,#7c3aed);
+    --gradient-accent:linear-gradient(135deg,#f97316,#fb923c);
   }
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}
   body{background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
@@ -28,7 +33,7 @@
     position:sticky;top:0;z-index:1000;
     background:rgba(255,255,255,0.95);
     backdrop-filter:blur(10px);
-    box-shadow:0 4px 18px rgba(0,0,0,0.04);
+    box-shadow:0 4px 18px rgba(91,33,182,0.06);
     padding:14px 0;
   }
   .nav-inner{
@@ -37,24 +42,29 @@
   }
   .logo{
     font-weight:800;font-size:1.65rem;letter-spacing:-0.02em;
-    background:linear-gradient(135deg,#0b3b5c,#1d9bb8);
+    background:var(--gradient);
     -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
     display:flex;align-items:center;gap:8px;
   }
   .logo i{-webkit-text-fill-color:var(--accent);}
   .nav-links{display:flex;align-items:center;gap:26px;font-weight:500;}
   .nav-links a{color:var(--text);transition:color .2s;font-size:.95rem;}
-  .nav-links a:hover{color:var(--accent);}
+  .nav-links a:hover{color:var(--primary);}
   .btn{
     display:inline-flex;align-items:center;gap:8px;
     padding:12px 24px;border-radius:40px;font-weight:600;font-size:.95rem;
     transition:transform .2s,box-shadow .2s,background .2s;border:none;cursor:pointer;
   }
   .btn-primary{
-    background:linear-gradient(135deg,var(--primary),var(--accent));
-    color:#fff;box-shadow:0 6px 16px rgba(29,155,184,0.35);
+    background:var(--gradient);color:#fff;
+    box-shadow:0 6px 16px rgba(91,33,182,0.35);
   }
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(29,155,184,0.45);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(91,33,182,0.5);}
+  .btn-accent{
+    background:var(--gradient-accent);color:#fff;
+    box-shadow:0 6px 16px rgba(249,115,22,0.35);
+  }
+  .btn-accent:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(249,115,22,0.5);}
   .btn-whatsapp{
     background:var(--whatsapp);color:#fff;
     box-shadow:0 6px 16px rgba(37,211,102,0.35);
@@ -68,21 +78,21 @@
   /* ===== HERO ===== */
   .hero{
     position:relative;padding:80px 24px 60px;text-align:center;
-    background:radial-gradient(ellipse at top,#e6f4fa 0%,var(--bg) 65%);
+    background:radial-gradient(ellipse at top,#ede4ff 0%,var(--bg) 65%);
     overflow:hidden;
   }
   .hero::before,.hero::after{
-    content:'';position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;z-index:0;
+    content:'';position:absolute;border-radius:50%;filter:blur(80px);opacity:.4;z-index:0;
   }
-  .hero::before{width:340px;height:340px;background:#a5dff0;top:-100px;left:-80px;}
-  .hero::after{width:400px;height:400px;background:#c8eaf5;bottom:-160px;right:-120px;}
+  .hero::before{width:340px;height:340px;background:#d8b4fe;top:-100px;left:-80px;}
+  .hero::after{width:400px;height:400px;background:#fed7aa;bottom:-160px;right:-120px;}
   .hero-content{position:relative;z-index:1;max-width:820px;margin:0 auto;}
   .hero h1{
     font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-0.03em;
     line-height:1.15;margin-bottom:18px;
   }
   .hero h1 span{
-    background:linear-gradient(145deg,#0e6b8c,#1fa5c7);
+    background:var(--gradient-accent);
     -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   }
   .hero p{font-size:1.15rem;color:var(--muted);max-width:640px;margin:0 auto 32px;}
@@ -98,7 +108,7 @@
   /* ===== SECTION HEADER ===== */
   .section-header{text-align:center;max-width:720px;margin:60px auto 12px;padding:0 24px;}
   .section-header .tag{
-    display:inline-block;background:#e2f2f7;color:var(--primary);
+    display:inline-block;background:#ede4ff;color:var(--primary);
     padding:6px 18px;border-radius:30px;font-size:.85rem;font-weight:700;
     letter-spacing:.5px;text-transform:uppercase;margin-bottom:14px;
   }
@@ -112,14 +122,14 @@
   }
   .earn-card{
     background:var(--card-bg);border-radius:24px;overflow:hidden;
-    box-shadow:var(--shadow);border:1px solid rgba(29,155,184,0.08);
+    box-shadow:var(--shadow);border:1px solid rgba(91,33,182,0.08);
     display:flex;flex-direction:column;
     transition:transform .35s ease,box-shadow .35s ease,border-color .35s;
   }
   .earn-card:hover{
     transform:translateY(-8px);
-    box-shadow:0 28px 45px -12px rgba(13,85,110,0.22);
-    border-color:rgba(29,155,184,0.3);
+    box-shadow:0 28px 45px -12px rgba(91,33,182,0.25);
+    border-color:rgba(249,115,22,0.35);
   }
   .card-media{
     position:relative;height:160px;overflow:hidden;
@@ -131,21 +141,22 @@
     padding:5px 12px;border-radius:30px;font-size:.75rem;font-weight:700;color:var(--primary);
     display:flex;align-items:center;gap:5px;
   }
+  .badge.new{background:var(--gradient-accent);color:#fff;}
   .card-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1;}
   .card-body h3{font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:8px;}
   .card-body h3 .num{
-    background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;
+    background:var(--gradient);color:#fff;
     width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;
     justify-content:center;font-size:.8rem;font-weight:800;flex-shrink:0;
   }
   .card-body p{font-size:.92rem;color:var(--muted);margin-bottom:14px;flex:1;}
   .example{
-    background:#f6fbfe;border-left:3px solid var(--accent);
-    padding:10px 14px;border-radius:10px;font-size:.85rem;color:#1f3a4b;margin-bottom:16px;
+    background:#faf5ff;border-left:3px solid var(--accent);
+    padding:10px 14px;border-radius:10px;font-size:.85rem;color:#3b2d5c;margin-bottom:16px;
   }
   .example strong{color:var(--primary);}
   .example .mini{
-    display:inline-block;background:#e2f2f7;color:var(--primary);
+    display:inline-block;background:#ede4ff;color:var(--primary);
     padding:2px 8px;border-radius:6px;font-size:.72rem;font-weight:700;margin-top:6px;margin-right:4px;
   }
   .card-actions{display:flex;flex-direction:column;gap:10px;}
@@ -159,17 +170,17 @@
 
   /* ===== GLOBAL CTA ===== */
   .global-cta{
-    max-width:900px;margin:60px auto;padding:0 24px;
-    background:linear-gradient(135deg,#0b3b5c,#0f6b8a);
-    border-radius:28px;padding:48px 32px;text-align:center;color:#fff;
-    box-shadow:0 20px 40px -12px rgba(11,59,92,0.45);position:relative;overflow:hidden;
+    max-width:900px;margin:60px auto;padding:48px 32px;
+    background:var(--gradient);
+    border-radius:28px;text-align:center;color:#fff;
+    box-shadow:0 20px 40px -12px rgba(91,33,182,0.55);position:relative;overflow:hidden;
   }
   .global-cta::after{
     content:'';position:absolute;width:220px;height:220px;border-radius:50%;
-    background:rgba(255,255,255,0.08);top:-80px;right:-60px;
+    background:rgba(249,115,22,0.25);top:-80px;right:-60px;
   }
   .global-cta h3{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:10px;position:relative;z-index:1;}
-  .global-cta p{opacity:.85;margin-bottom:24px;position:relative;z-index:1;}
+  .global-cta p{opacity:.9;margin-bottom:24px;position:relative;z-index:1;}
   .global-cta .btn{position:relative;z-index:1;}
 
   /* ===== SUPPORT SECTION ===== */
@@ -178,13 +189,13 @@
   }
   .support-card{
     background:#fff;border-radius:28px;padding:36px 40px;
-    box-shadow:var(--shadow);border:1px solid rgba(29,155,184,0.12);
+    box-shadow:var(--shadow);border:1px solid rgba(91,33,182,0.12);
     display:flex;align-items:center;justify-content:space-between;
     flex-wrap:wrap;gap:24px;
   }
   .support-left{display:flex;align-items:center;gap:18px;}
   .support-left .icon-wrap{
-    width:64px;height:64px;border-radius:20px;background:#e2f2f7;
+    width:64px;height:64px;border-radius:20px;background:#ede4ff;
     display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--whatsapp);
   }
   .support-left h3{font-size:1.3rem;font-weight:700;margin-bottom:2px;}
@@ -193,13 +204,14 @@
 
   /* ===== FOOTER ===== */
   footer{
-    background:#0b2a3b;color:#c8dbe6;padding:40px 24px 24px;text-align:center;
+    background:#1e1b2e;color:#c9bfe0;padding:40px 24px 24px;text-align:center;
   }
   footer .logo{color:#fff;-webkit-text-fill-color:#fff;justify-content:center;margin-bottom:12px;font-size:1.4rem;}
+  footer .logo i{-webkit-text-fill-color:var(--accent);}
   footer p{font-size:.9rem;opacity:.7;max-width:500px;margin:0 auto 16px;}
   footer .footer-links{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;font-size:.88rem;margin-bottom:20px;}
   footer .footer-links a{opacity:.8;transition:opacity .2s;}
-  footer .footer-links a:hover{opacity:1;}
+  footer .footer-links a:hover{opacity:1;color:var(--accent-light);}
   footer .copy{font-size:.8rem;opacity:.5;border-top:1px solid rgba(255,255,255,0.1);padding-top:18px;}
 
   /* ===== RESPONSIVE ===== */
@@ -234,12 +246,12 @@
 <!-- ===== NAVBAR ===== -->
 <header class="navbar">
   <div class="nav-inner">
-    <div class="logo"><i class="fas fa-bolt"></i> NovaEarn</div>
+    <div class="logo"><i class="fas fa-bolt"></i> SwiftGain</div>
     <nav class="nav-links">
       <a href="#home">Home</a>
       <a href="#earn">Ways to Earn</a>
       <a href="#support">Support</a>
-      <a href="https://www.nova-pay.co.ke/register.php?ref=Denly" target="_blank" class="btn btn-primary">
+      <a href="https://swiftgain.co.ke/auth/register?ref=9FC4A77C" target="_blank" class="btn btn-accent">
         <i class="fas fa-user-plus"></i> Register
       </a>
     </nav>
@@ -249,10 +261,10 @@
 <!-- ===== HERO / HOME ===== -->
 <section class="hero" id="home">
   <div class="hero-content">
-    <h1>7 Real Ways to <span>Earn Online</span> Today</h1>
-    <p>From affiliate marketing to walking — start earning with NovaEarn. Join thousands of Kenyans turning their time into real income.</p>
+    <h1>8 Real Ways to <span>Earn Online</span> Today</h1>
+    <p>From affiliate marketing to paid surveys — start earning with SwiftGain. Join thousands of Kenyans turning their time into real income.</p>
     <div class="hero-actions">
-      <a href="https://www.nova-pay.co.ke/register.php?ref=Denly" target="_blank" class="btn btn-primary">
+      <a href="https://swiftgain.co.ke/auth/register?ref=9FC4A77C" target="_blank" class="btn btn-primary">
         <i class="fas fa-rocket"></i> Create Free Account
       </a>
       <a href="#earn" class="btn btn-outline">
@@ -274,7 +286,7 @@
   <p>Every method below is live and ready. Click <strong>Register</strong> to start, or chat with our support team on WhatsApp.</p>
 </div>
 
-<!-- ===== EARN GRID (7 CARDS) ===== -->
+<!-- ===== EARN GRID (8 CARDS) ===== -->
 <div class="earn-grid">
 
   <!-- 1. Affiliate Marketing -->
@@ -291,7 +303,7 @@
         <br><span class="mini">+ KES 350 avg</span>
       </div>
       <div class="card-actions">
-        <a href="https://www.nova-pay.co.ke/register.php?ref=Denly" target="_blank" class="btn btn-primary">
+        <a href="https://swiftgain.co.ke/auth/register?ref=9FC4A77C" target="_blank" class="btn btn-primary">
           <i class="fas fa-user-plus"></i> Register
         </a>
         <div class="support-row">
@@ -315,7 +327,7 @@
         <br><span class="mini">+ KES 150 avg</span>
       </div>
       <div class="card-actions">
-        <a href="https://www.nova-pay.co.ke/register.php?ref=Denly" target="_blank" class="btn btn-primary">
+        <a href="https://swiftgain.co.ke/auth/register?ref=9FC4A77C" target="_blank" class="btn btn-primary">
           <i class="fas fa-user-plus"></i> Register
         </a>
         <div class="support-row">
@@ -339,7 +351,7 @@
         <br><span class="mini">+ KES 200 / review</span>
       </div>
       <div class="card-actions">
-        <a href="https://www.nova-pay.co.ke/register.php?ref=Denly" target="_blank" class="btn btn-primary">
+        <a href="https://swiftgain.co.ke/auth/register?ref=9FC4A77C" target="_blank" class="btn btn-primary">
           <i class="fas fa-user-plus"></i> Register
         </a>
         <div class="support-row">
@@ -363,7 +375,7 @@
         <br><span class="mini">+ KES 100 / 10min</span>
       </div>
       <div class="card-actions">
-        <a href="https://www.nova-pay.co.ke/register.php?ref=Denly" target="_blank" class="btn btn-primary">
+        <a href="https://swiftgain.co.ke/auth/register?ref=9FC4A77C" target="_blank" class="btn btn-primary">
           <i class="fas fa-user-plus"></i> Register
         </a>
         <div class="support-row">
@@ -387,7 +399,7 @@
         <br><span class="mini">+ KES 400 / sale</span>
       </div>
       <div class="card-actions">
-        <a href="https://www.nova-pay.co.ke/register.php?ref=Denly" target="_blank" class="btn btn-primary">
+        <a href="https://swiftgain.co.ke/auth/register?ref=9FC4A77C" target="_blank" class="btn btn-primary">
           <i class="fas fa-user-plus"></i> Register
         </a>
         <div class="support-row">
@@ -411,7 +423,7 @@
         <br><span class="mini">+ Up to KES 500</span>
       </div>
       <div class="card-actions">
-        <a href="https://www.nova-pay.co.ke/register.php?ref=Denly" target="_blank" class="btn btn-primary">
+        <a href="https://swiftgain.co.ke/auth/register?ref=9FC4A77C" target="_blank" class="btn btn-primary">
           <i class="fas fa-user-plus"></i> Register
         </a>
         <div class="support-row">
@@ -435,7 +447,31 @@
         <br><span class="mini">+ KES 80 / 10k steps</span>
       </div>
       <div class="card-actions">
-        <a href="https://www.nova-pay.co.ke/register.php?ref=Denly" target="_blank" class="btn btn-primary">
+        <a href="https://swiftgain.co.ke/auth/register?ref=9FC4A77C" target="_blank" class="btn btn-primary">
+          <i class="fas fa-user-plus"></i> Register
+        </a>
+        <div class="support-row">
+          <i class="fab fa-whatsapp"></i> Support: <a href="https://wa.me/254796214382" target="_blank">0796214382</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 8. Paid Survey -->
+  <article class="earn-card">
+    <div class="card-media">
+      <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80" alt="Paid Survey" />
+      <span class="badge new"><i class="fas fa-clipboard-list"></i> New</span>
+    </div>
+    <div class="card-body">
+      <h3><span class="num">8</span> 📋 Paid Survey</h3>
+      <p>Share your opinions by completing short surveys from brands and researchers. Get paid per completed survey.</p>
+      <div class="example">
+        <strong>Example:</strong> Complete a 5-minute survey → earn KES 120.
+        <br><span class="mini">+ KES 120 / survey</span>
+      </div>
+      <div class="card-actions">
+        <a href="https://swiftgain.co.ke/auth/register?ref=9FC4A77C" target="_blank" class="btn btn-primary">
           <i class="fas fa-user-plus"></i> Register
         </a>
         <div class="support-row">
@@ -450,8 +486,8 @@
 <!-- ===== GLOBAL CTA ===== -->
 <div class="global-cta">
   <h3>Ready to Start Earning?</h3>
-  <p>One registration gives you access to all 7 earning methods. Join NovaEarn today.</p>
-  <a href="https://www.nova-pay.co.ke/register.php?ref=Denly" target="_blank" class="btn btn-primary">
+  <p>One registration gives you access to all 8 earning methods. Join SwiftGain today.</p>
+  <a href="https://swiftgain.co.ke/auth/register?ref=9FC4A77C" target="_blank" class="btn btn-accent">
     <i class="fas fa-user-plus"></i> Register Now — It's Free
   </a>
 </div>
@@ -475,15 +511,15 @@
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  <div class="logo"><i class="fas fa-bolt"></i> NovaEarn</div>
-  <p>Your trusted platform for real online earnings. Affiliate marketing, micro-tasks, and more.</p>
+  <div class="logo"><i class="fas fa-bolt"></i> SwiftGain</div>
+  <p>Your trusted platform for real online earnings. Affiliate marketing, micro-tasks, surveys and more.</p>
   <div class="footer-links">
     <a href="#home">Home</a>
     <a href="#earn">Ways to Earn</a>
     <a href="#support">Support</a>
-    <a href="https://www.nova-pay.co.ke/register.php?ref=Denly" target="_blank">Register</a>
+    <a href="https://swiftgain.co.ke/auth/register?ref=9FC4A77C" target="_blank">Register</a>
   </div>
-  <div class="copy">© 2025 NovaEarn. All rights reserved. | Ref: Denly</div>
+  <div class="copy">© 2025 SwiftGain. All rights reserved. | Ref: 9FC4A77C</div>
 </footer>
 
 <!-- ===== FLOATING WHATSAPP ===== -->
@@ -491,29 +527,23 @@
   <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- ===== JS (Smooth scroll + simple interactions) ===== -->
+<!-- ===== JS ===== -->
 <script>
-  // Smooth scroll for nav links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
       if (targetId === '#') return;
       const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior:'smooth', block:'start' }); }
     });
   });
 
-  // Track registration clicks (console for analytics demo)
-  document.querySelectorAll('a[href*="nova-pay.co.ke/register"]').forEach(btn => {
+  document.querySelectorAll('a[href*="swiftgain.co.ke/auth/register"]').forEach(btn => {
     btn.addEventListener('click', function () {
       console.log('✅ Registration link clicked:', this.href);
     });
   });
 
-  // Fade-in cards on scroll
   const cards = document.querySelectorAll('.earn-card');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
